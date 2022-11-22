@@ -6,6 +6,7 @@ const codeRouter = express.Router();
 // Importing routers to our models
 const {
   getByTitle,
+  getSnippetByID,
   createSnippet,
   updateSnippet,
   deleteSnippet,
@@ -15,8 +16,8 @@ const {
 // Get code snippets by TITLE
 codeRouter.get("/", async (req, res) => {
  if (req.query.search != undefined) {
-     const result = await getByTitle(req.query.search);
-    // const result = "test"
+    //  const result = await getByTitle(req.query.search);
+     const result = "test"
     res.json({
       success: true,
       payload: result,
@@ -25,6 +26,14 @@ codeRouter.get("/", async (req, res) => {
 });
 
 // Get code snippets by ID
+
+codeRouter.get("/:id", async (req, res) => {
+  const result = await getSnippetByID(req.params.id);
+  res.json({
+    success: true,
+    payload: result,
+  });
+});
 
 // POST code snippet
 

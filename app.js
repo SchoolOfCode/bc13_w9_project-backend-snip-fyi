@@ -10,6 +10,7 @@ const morgan = require("morgan");
 const app = express();
 const PORT = process.env.port || 3000;
 
+// importing the routers
 const codeRouter = require('./routes/code_snippets.js');
 
 app.use(morgan("dev"));

@@ -23,15 +23,17 @@ codeRouter.get("/", async (req, res) => {
       success: true,
       payload: result,
     });
-  }
-  //else {
-  //const result = await getSnippets();
-  //res.json({
-  //success: true,
-  //payload: result,
-  // });
+  } else {
+       const result = await getSnippets();
+        res.json({
+        success: true,
+        payload: result,
+        });
+    };
 });
+
 // get code snippets by comment id
+
 // Get code snippets by ID
 
 codeRouter.get("/:id", async (req, res) => {

@@ -7,21 +7,22 @@
 
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
-const PORT = process.env.port || 3000;
+const PORT = process.env.PORT || 5000;
 
 // importing the routers
-const codeRouter = require('./routes/code_snippets.js');
-const commentRouter = require('./routes/comments.js');
+const codeRouter = require("./routes/code_snippets.js");
+const commentRouter = require("./routes/comments.js");
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.static("public"));
 app.use(express.json());
 
 // middleware routing
-app.use('/api/codesnippet', codeRouter);
-app.use('/api/codecomment', commentRouter)
-
+app.use("/api/codesnippet", codeRouter);
+app.use("/api/codecomment", commentRouter);
 
 app.listen(PORT, function () {
   console.log(`Server is running on port ${PORT}`);

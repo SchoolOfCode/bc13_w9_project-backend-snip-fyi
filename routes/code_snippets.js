@@ -24,18 +24,18 @@ codeRouter.get("/", async (req, res) => {
       payload: result,
     });
   } else {
-       const result = await getSnippets();
-        res.json({
-        success: true,
-        payload: result,
-        });
-    };
+    const result = await getSnippets();
+    res.json({
+      success: true,
+      payload: result,
+    });
+  }
 });
 
 // get code snippets by comment id
 
-codeRouter.get('/', async (req, res) => {
-  if (req.query.comment_id != underfined) {
+codeRouter.get("/", async (req, res) => {
+  if (req.query.comment_id != undefined) {
     res.json({
       success: true,
       payload: await getSnippetByComment(req.query.snippet_id),
@@ -46,7 +46,7 @@ codeRouter.get('/', async (req, res) => {
       payload: await getSnippets(),
     });
   }
-})
+});
 
 // Get code snippets by ID
 
@@ -80,8 +80,9 @@ codeRouter.patch("/id", async (req, res) => {
 
 // Delete code snippet by ID
 
-codeRouter.delete("/id", async (req, res) => {
+codeRouter.delete("/:id", async (req, res) => {
   const result = await deleteSnippet(req.params.id);
+  console.log(result);
   res.json({
     success: true,
     payload: result,

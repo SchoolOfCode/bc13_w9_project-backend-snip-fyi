@@ -34,8 +34,13 @@ async function getSnippetByComment(comment_id) {
 // query database to create code snippet
 async function createSnippet(snippet) {
   const results = await query(
-    `INSERT INTO snippets (snippet_title, snippet_code, snippet_description) VALUES ($1, $2, $3) RETURNING *`,
-    [snippet.snippet_title, snippet.snippet_code, snippet.snippet_description]
+    `INSERT INTO snippets (snippet_title, snippet_code, snippet_description, snippet_date_create) VALUES ($1, $2, $3, $4) RETURNING *`,
+    [
+      snippet.snippet_title,
+      snippet.snippet_code,
+      snippet.snippet_description,
+      snippet.snippet_date_create,
+    ]
   );
   return results.rows[0];
 }
@@ -43,7 +48,7 @@ async function createSnippet(snippet) {
 // query database to update code snippet by id
 async function updateSnippet(snippet_id, updates) {
   const results = await query(
-    `UPDATE snippet SET snippet_title = $1, snippet_code = $2, snippet_description = $3 WHERE snippet_id = $4 RETURNING *`,
+    `UPDATE snippets SET snippet_title = $1, snippet_code = $2, snippet_description = $3 WHERE snippet_id = $4 RETURNING *;`,
     [
       updates.snippet_title,
       updates.snippet_code,
@@ -56,17 +61,13 @@ async function updateSnippet(snippet_id, updates) {
 
 // query database to delete customer by id
 
-async function deleteSnippet(id){
+async function deleteSnippet(id) {
   const results = await query(
-    `DELETE FROM snippet
-    WHERE snippet_id = $1
-    RETURNING *`,
+    `DELETE FROM snippets WHERE snippet_id = $1 RETURNING *;`,
     [id]
-  )
-  return results.rows[0]
+  );
+  return results.rows[0];
 }
-
-
 
 // export all the functions
 module.exports = {
@@ -76,5 +77,5 @@ module.exports = {
   getSnippetByComment,
   createSnippet,
   updateSnippet,
-  deleteSnippet
+  deleteSnippet,
 };

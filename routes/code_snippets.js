@@ -34,6 +34,20 @@ codeRouter.get("/", async (req, res) => {
 
 // get code snippets by comment id
 
+codeRouter.get('/', async (req, res) => {
+  if (req.query.comment_id != underfined) {
+    res.json({
+      success: true,
+      payload: await getSnippetByComment(req.query.snippet_id),
+    });
+  } else {
+    res.json({
+      success: true,
+      payload: await getSnippets(),
+    });
+  }
+})
+
 // Get code snippets by ID
 
 codeRouter.get("/:id", async (req, res) => {

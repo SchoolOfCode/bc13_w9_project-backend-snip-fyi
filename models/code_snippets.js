@@ -10,8 +10,8 @@ async function getSnippets() {
 // query database to return code snippets by title
 async function getByTitle(searchTerm) {
   const results = await query(
-    `SELECT * FROM snippets WHERE snippet_title = $1`,
-    [searchTerm]
+    `SELECT * FROM snippets WHERE snippet_title ILIKE $1`,
+    [`%${searchTerm}%`]
   );
   return results.rows;
 }

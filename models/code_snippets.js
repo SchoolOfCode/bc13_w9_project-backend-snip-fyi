@@ -56,6 +56,17 @@ async function updateSnippet(snippet_id, updates) {
 
 // query database to delete customer by id
 
+async function deleteSnippet(id){
+  const results = await query(
+    `DELETE FROM snippet
+    WHERE snippet_id = $1
+    RETURNING *`,
+    [id]
+  )
+  return results.rows[0]
+}
+
+
 // export all the functions
 module.exports = {
   getSnippets,
@@ -64,4 +75,5 @@ module.exports = {
   getSnippetByComment,
   createSnippet,
   updateSnippet,
+  deleteSnippet
 };

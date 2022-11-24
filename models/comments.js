@@ -30,7 +30,7 @@ export async function createComment({
   );
   return result.rows[0];
 }
-
+// get comments by snippet id
 export async function getCommentsBySnippetId(id) {
   const results = await query(
     `SELECT *

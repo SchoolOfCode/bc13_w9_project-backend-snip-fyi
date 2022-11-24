@@ -70,24 +70,3 @@ export async function deleteSnippet(id) {
   );
   return results.rows[0];
 }
-
-// export all the functions
-// module.exports = {
-//   getSnippets,
-//   getByTitle,
-//   getSnippetByID,
-//   getSnippetByComment,
-//   createSnippet,
-//   updateSnippet,
-//   deleteSnippet,
-// };
-
-// export default {
-//   getSnippets,
-//   getByTitle,
-//   getSnippetByID,
-//   getSnippetByComment,
-//   createSnippet,
-//   updateSnippet,
-//   deleteSnippet,
-//  };

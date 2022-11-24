@@ -1,6 +1,5 @@
 // import from database index
 
-// const { query } = require("../db/index.js");
 import query from "../db/index.js";
 
 // query comment table to return all comments by id

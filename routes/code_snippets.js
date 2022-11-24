@@ -3,9 +3,6 @@
 
 import express from "express"
 const codeRouter = express.Router();
-// import codeRouter from "express"
-
-// const express = require("express");
 
 import {
   getSnippets, 
@@ -94,6 +91,4 @@ codeRouter.delete("/:id", async (req, res) => {
 });
 
 // Export routers..DONE!
-// module.exports = codeRouter;
-
 export default codeRouter;

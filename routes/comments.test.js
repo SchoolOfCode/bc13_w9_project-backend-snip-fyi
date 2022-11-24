@@ -24,7 +24,7 @@ test("GET /api/codecomment", async () => {
 // testing that the post request for the comments table is functioning
 test("POST /api/codecomment", async () => {
   // testing that request body 
-  const snippet_id = "1"
+  const snippet_id = "71"
   const comment_content = "Test content"
   const comment_author = "Marcel and Fabbi"
   const comment_date_create = "24-11-2022"
@@ -53,8 +53,10 @@ test("POST /api/codecomment", async () => {
   });
  });
 
+ /*
 // testing that the delete request for the comments table is functioning
+test("DELETE /api/codecomment", async )
 // testing the response status is 200
 // testing the response body contains success: true, payload: object
-
-// npm t comments.test.jsnpm t comments.test.js
+*/
+// npm t comments.test.js

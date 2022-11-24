@@ -1,16 +1,17 @@
 // import from database index
 
-const { query } = require("../db/index.js");
+// const { query } = require("../db/index.js");
+import query from "../db/index.js";
 
 // query comment table to return all comments by id
 
-async function getComments() {
+export async function getComments() {
   const results = await query(`SELECT * FROM comments;`);
   return results.rows;
 }
 
 //Query comment table to delete comment by ID
-async function deleteComment(id) {
+export async function deleteComment(id) {
   const results = await query(`DELETE FROM comments WHERE comment_id = $1`, [
     id,
   ]);
@@ -18,7 +19,7 @@ async function deleteComment(id) {
 }
 
 // Create new comment
-async function createComment({
+export async function createComment({
   snippet_id,
   comment_content,
   comment_author,
@@ -31,7 +32,7 @@ async function createComment({
   return result.rows[0];
 }
 
-async function getCommentsBySnippetId(id) {
+export async function getCommentsBySnippetId(id) {
   const results = await query(
     `SELECT *
   FROM comments WHERE snippet_id = $1`,
@@ -39,11 +40,3 @@ async function getCommentsBySnippetId(id) {
   );
   return results.rows;
 }
-
-// export it
-module.exports = {
-  getComments,
-  getCommentsBySnippetId,
-  deleteComment,
-  createComment,
-};

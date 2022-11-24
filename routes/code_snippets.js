@@ -1,18 +1,22 @@
 // Import express..DONE!
 // Import routers..DONE!
-const express = require("express");
-const codeRouter = express.Router();
 
-// Importing routers to our models
-const {
-  getSnippets,
+import express from "express"
+const codeRouter = express.Router();
+// import codeRouter from "express"
+
+// const express = require("express");
+
+import {
+  getSnippets, 
   getByTitle,
   getSnippetByID,
   getSnippetByComment,
   createSnippet,
   updateSnippet,
-  deleteSnippet,
-} = require("../models/code_snippets.js");
+  deleteSnippet
+} from "../models/code_snippets.js"
+
 
 // Get code snippets by TITLE
 codeRouter.get("/", async (req, res) => {
@@ -90,4 +94,6 @@ codeRouter.delete("/:id", async (req, res) => {
 });
 
 // Export routers..DONE!
-module.exports = codeRouter;
+// module.exports = codeRouter;
+
+export default codeRouter;

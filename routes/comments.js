@@ -1,19 +1,34 @@
 // import express
 
-const express = require("express");
+import express from "express";
+const commentRouter = express.Router();
+
+// const express = require("express");
 
 // import routers
 
-const commentRouter = express.Router();
+// import commentRouter from "express";
 
 // importing our models from comments.js
 
-const {
+// const {
+//   getComments,
+//   getCommentsBySnippetId,
+//   createComment,
+//   deleteComment,
+// } = require("../models/comments.js");
+
+import {
   getComments,
   getCommentsBySnippetId,
   createComment,
   deleteComment,
-} = require("../models/comments.js");
+ } from "../models/comments.js"
+
+// import getComments from "../models/comments.js"
+// import getCommentsBySnippetId from "../models/comments.js"
+// import createComment from "../models/comments.js"
+// import deleteComment from "../models/comments.js"
 
 // get comments by comment_id
 
@@ -54,4 +69,6 @@ commentRouter.delete("/:id", async (req, res) => {
 // export routers
 
 // router needs its own semantic name
-module.exports = commentRouter;
+
+export default commentRouter;
+// module.exports = commentRouter;

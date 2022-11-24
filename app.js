@@ -5,15 +5,23 @@
 // Import the code snippet router..DONE!
 // Console.log that server is running on port3000..DONE!
 
-const express = require("express");
-const morgan = require("morgan");
-const cors = require("cors");
+// const express = require("express");
+// const morgan = require("morgan");
+// const cors = require("cors");
+import express from "express";
+import morgan from "morgan";
+import cors from "cors";
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 // importing the routers
-const codeRouter = require("./routes/code_snippets.js");
-const commentRouter = require("./routes/comments.js");
+import codeRouter from './routes/code_snippets.js'
+import commentRouter from './routes/comments.js'
+// const codeRouter = require("./routes/code_snippets.js");
+// const commentRouter = require("./routes/comments.js");
 
 app.use(cors());
 app.use(morgan("dev"));

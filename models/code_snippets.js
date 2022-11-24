@@ -1,14 +1,16 @@
 // import from ../db/index.js..DONE!
-const { query } = require("../db/index.js");
+
+import query from "../db/index.js";
+// const { query } = require("../db/index.js");
 
 // query database to return all code snippets
-async function getSnippets() {
+export async function getSnippets() {
   const results = await query(`SELECT * FROM snippets`);
   return results.rows;
 }
 
 // query database to return code snippets by title
-async function getByTitle(searchTerm) {
+export async function getByTitle(searchTerm) {
   const results = await query(
     `SELECT * FROM snippets WHERE snippet_title ILIKE $1`,
     [`%${searchTerm}%`]
@@ -16,7 +18,7 @@ async function getByTitle(searchTerm) {
   return results.rows;
 }
 // query database to return code snippets by snippets_id
-async function getSnippetByID(snippet_id) {
+export async function getSnippetByID(snippet_id) {
   const results = await query(`SELECT * FROM snippets WHERE snippet_id = $1`, [
     snippet_id,
   ]);
@@ -24,7 +26,7 @@ async function getSnippetByID(snippet_id) {
 }
 
 // query database to return code snippets by comments_id
-async function getSnippetByComment(comment_id) {
+export async function getSnippetByComment(comment_id) {
   const results = await query(`SELECT * FROM snippets WHERE comment_id = $1`, [
     comment_id,
   ]);
@@ -32,7 +34,7 @@ async function getSnippetByComment(comment_id) {
 }
 
 // query database to create code snippet
-async function createSnippet(snippet) {
+export async function createSnippet(snippet) {
   const results = await query(
     `INSERT INTO snippets (snippet_title, snippet_code, snippet_description, snippet_date_create) VALUES ($1, $2, $3, $4) RETURNING *`,
     [
@@ -46,7 +48,7 @@ async function createSnippet(snippet) {
 }
 
 // query database to update code snippet by id
-async function updateSnippet(snippet_id, updates) {
+export async function updateSnippet(snippet_id, updates) {
   const results = await query(
     `UPDATE snippets SET snippet_title = $1, snippet_code = $2, snippet_description = $3 WHERE snippet_id = $4 RETURNING *;`,
     [
@@ -61,7 +63,7 @@ async function updateSnippet(snippet_id, updates) {
 
 // query database to delete customer by id
 
-async function deleteSnippet(id) {
+export async function deleteSnippet(id) {
   const results = await query(
     `DELETE FROM snippets WHERE snippet_id = $1 RETURNING *;`,
     [id]
@@ -70,12 +72,22 @@ async function deleteSnippet(id) {
 }
 
 // export all the functions
-module.exports = {
-  getSnippets,
-  getByTitle,
-  getSnippetByID,
-  getSnippetByComment,
-  createSnippet,
-  updateSnippet,
-  deleteSnippet,
-};
+// module.exports = {
+//   getSnippets,
+//   getByTitle,
+//   getSnippetByID,
+//   getSnippetByComment,
+//   createSnippet,
+//   updateSnippet,
+//   deleteSnippet,
+// };
+
+// export default {
+//   getSnippets,
+//   getByTitle,
+//   getSnippetByID,
+//   getSnippetByComment,
+//   createSnippet,
+//   updateSnippet,
+//   deleteSnippet,
+//  };

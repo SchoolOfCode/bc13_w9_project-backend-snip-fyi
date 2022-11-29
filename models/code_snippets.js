@@ -1,7 +1,8 @@
 import query from "../db/index.js";
 
-
-// query database to return all code snippets
+/**
+ * @returns all code snippets
+ */
 export async function getSnippets() {
   try {
     const results = await query(`SELECT * FROM snippets`);
@@ -10,8 +11,10 @@ export async function getSnippets() {
     console.log(error)
   }
 }
-
-// query database to return code snippets by title
+ /**
+  * @param {*} searchTerm
+  * @returns code snippets by title
+  */
 export async function getByTitle(searchTerm) {
 
   try {
@@ -24,7 +27,11 @@ export async function getByTitle(searchTerm) {
     console.log(error)
   }
 }
-// query database to return code snippets by snippets_id
+
+/**
+ * @param {*} snippet_id 
+ * @returns code snippets by snippets_id
+ */
 export async function getSnippetByID(snippet_id) {
   try {
     const results = await query(`SELECT * FROM snippets WHERE snippet_id = $1`, [
@@ -36,7 +43,10 @@ export async function getSnippetByID(snippet_id) {
   }
 }
 
-// query database to return code snippets by comments_id
+/**
+ * @param {*} comment_id 
+ * @returns code snippets by comments_id
+ */
 export async function getSnippetByComment(comment_id) {
   try {
     const results = await query(`SELECT * FROM snippets WHERE comment_id = $1`, [
@@ -48,7 +58,10 @@ export async function getSnippetByComment(comment_id) {
   }
 }
 
-// query database to create code snippet
+/**
+ * @param {*} snippet 
+ * @returns created code snippet
+ */
 export async function createSnippet(snippet) {
   try {
     const results = await query(
@@ -66,7 +79,11 @@ export async function createSnippet(snippet) {
   }
 }
 
-// query database to update code snippet by id
+/**
+ * @param {*} snippet_id 
+ * @param {*} updates 
+ * @returns updated code snippet by snippet_id
+ */
 export async function updateSnippet(snippet_id, updates) {
   try {
     const results = await query(
@@ -84,8 +101,10 @@ export async function updateSnippet(snippet_id, updates) {
   }
 }
 
-// query database to delete customer by id
-
+/** 
+ * @param {*} id 
+ * @returns deleted snippet by snippet_id
+ */
 export async function deleteSnippet(id) {
   try {
     const results = await query(

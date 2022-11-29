@@ -11,38 +11,54 @@ import {
 
  // get comments by comment_id
 commentRouter.get("/", async (req, res) => {
-  res.json({
-    success: true,
-    payload: await getComments(req.params.id),
-  });
+  try {
+    res.json({
+      success: true,
+      payload: await getComments(req.params.id),
+    }); 
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 // get all comments with the given snippet_id
 commentRouter.get("/:id", async (req, res) => {
-  const result = await getCommentsBySnippetId(req.params.id);
-  res.json({
-    success: true,
-    payload: result,
-  });
+  try {
+    const result = await getCommentsBySnippetId(req.params.id);
+    res.json({
+      success: true,
+      payload: result,
+    });
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 // Create new comment
 commentRouter.post("/", async (req, res) => {
-  const payload = req.body;
-  const result = await createComment(payload);
-  res.json({
-    success: true,
-    payload: result,
-  });
+  try {
+    const payload = req.body;
+    const result = await createComment(payload);
+    res.json({
+      success: true,
+      payload: result,
+    });
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 // Deleting comments by comment_id
 commentRouter.delete("/:id", async (req, res) => {
-  const result = await deleteComment(req.params.id);
-  res.json({
-    success: true,
-    payload: result,
-  });
+  try {
+    const result = await deleteComment(req.params.id);
+    res.json({
+      success: true,
+      payload: result,
+    });
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 export default commentRouter;

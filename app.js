@@ -1,10 +1,7 @@
-// Import express.. DONE!
-// Import morgan.. DONE!
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 
-// Assign app to express that has been imported..DONE!
 const app = express();
 const PORT = process.env.PORT || 5000;
 

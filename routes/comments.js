@@ -1,9 +1,6 @@
-// import express
 
 import express from "express";
 const commentRouter = express.Router();
-
-// import routers
 
 import {
   getComments,
@@ -12,9 +9,7 @@ import {
   deleteComment,
  } from "../models/comments.js"
 
-
-// get comments by comment_id
-
+ // get comments by comment_id
 commentRouter.get("/", async (req, res) => {
   res.json({
     success: true,
@@ -49,8 +44,5 @@ commentRouter.delete("/:id", async (req, res) => {
     payload: result,
   });
 });
-// export routers
-
-// router needs its own semantic name
 
 export default commentRouter;

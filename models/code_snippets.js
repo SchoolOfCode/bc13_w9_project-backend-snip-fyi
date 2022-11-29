@@ -1,7 +1,5 @@
-// import from ../db/index.js..DONE!
-
 import query from "../db/index.js";
-// const { query } = require("../db/index.js");
+
 
 // query database to return all code snippets
 export async function getSnippets() {

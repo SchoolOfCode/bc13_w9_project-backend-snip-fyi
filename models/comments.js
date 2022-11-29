@@ -1,4 +1,3 @@
-// import from database index
 
 import query from "../db/index.js";
 

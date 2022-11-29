@@ -1,6 +1,3 @@
-// Import express..DONE!
-// Import routers..DONE!
-
 import express from "express"
 const codeRouter = express.Router();
 
